@@ -13,8 +13,7 @@
 #ifndef GPIO_INTERFACE_H_
 #define GPIO_INTERFACE_H_
 
-#include "std_types.h"
-
+#include "STD.h"
 /*******************************************************************************
  *                                Definitions                                  *
  *******************************************************************************/
@@ -37,6 +36,9 @@
 #define GPIO_PIN6_ID                6
 #define GPIO_PIN7_ID                7
 
+
+#define LOGIC_HIGH                  1
+#define LOGIC_LOW                   0
 /*******************************************************************************
  *                               Types Declaration                             *
  *******************************************************************************/
@@ -133,5 +135,8 @@ void GPIO_digitalPinEN (uint8 port_num, uint8 pin_num);
  * TheGPIOPDR register is the pull-down control register. When a bit is set, a pull-down resistor is enabled..
  */
 void pullUp_pullDown_resistorPinCONTROL (uint8 port_num, uint8 pin_num, GPIO_pullResistorCONTROL pull);
+
+
+uint32 Get_PinValue(uint8 port_num, uint8 pin_num);
 
 #endif /* GPIO_INTERFACE_H_ */

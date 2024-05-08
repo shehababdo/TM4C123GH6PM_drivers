@@ -21,13 +21,19 @@
 #define GPIO_PORTE_BASE_ADDRESS         0x40024000
 #define GPIO_PORTF_BASE_ADDRESS         0x40025000
 
-#define RCGCGPIO                        *((vloatile uint32 *)(0x400FE000 +0x608))       /*General-Purpose Input/Output Run Mode Clock Gating Control*/
+#define RCGCGPIO                        *((volatile uint32 *)(0x400FE000 +0x608))       /*General-Purpose Input/Output Run Mode Clock Gating Control*/
 
+#define GPIOLOCKA *((volatile uint32 *)(0x40004000+0x520))
+#define GPIOLOCKB *((volatile uint32 *)(0x40005000+0x520))
+#define GPIOLOCKC *((volatile uint32 *)(0x40006000+0x520))
+#define GPIOLOCKD *((volatile uint32 *)(0x40007000+0x520))
+#define GPIOLOCKE *((volatile uint32 *)(0x40024000+0x520))
+#define GPIOLOCKF *((volatile uint32 *)(0x40025000+0x520))
 
 typedef struct
 {
+    uint32 reserved0 [255];
     uint32 GPIODATA;
-    uint32 reserved0 [256]=0;
     uint32 GPIODIR;
     uint32 GPIOIS;
     uint32 GPIOIBE;
@@ -37,7 +43,7 @@ typedef struct
     uint32 GPIOMIS;
     uint32 GPIOICR;
     uint32 GPIOAFSEL;
-    uint32 reserved1 [32]=0;    
+    uint32 reserved1 [55];
     uint32 GPIODR2R;
     uint32 GPIODR4R;
     uint32 GPIODR8R;
@@ -46,14 +52,13 @@ typedef struct
     uint32 GPIOPDR;
     uint32 GPIOSLR;
     uint32 GPIODEN;
-    uint32 GPIOLOCK; 
+    uint32 GPIOLOCK;
     uint32 GPIOCR;
-    uint32 GPIOAMSEL;
     uint32 GPIOAMSEL;
     uint32 GPIOPCTL;
     uint32 GPIOADCCTL;
     uint32 GPIODMACTL;
-    uint32 reserved2 [679]=0;
+    uint32 reserved2 [678];
     uint32 GPIOPeriphID4;
     uint32 GPIOPeriphID5;
     uint32 GPIOPeriphID6;
